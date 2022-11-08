@@ -31,7 +31,7 @@ public class CustomDebeziumTopicTransformer<R extends ConnectRecord<R>> implemen
         if (op.equals("d") || op.equals("r") || op.equals("u")) {
             return null;
         }
-        // Only transform in cease of a create operation
+        // Only transform in case of a create operation
         else if (op.equals("c")) {
             Struct after = struct.getStruct("after");
 
@@ -49,6 +49,7 @@ public class CustomDebeziumTopicTransformer<R extends ConnectRecord<R>> implemen
                     .field("payload", after.schema().field("payload").schema())
                     .build();
 
+            // Create the values
             Struct value = new Struct(valueSchema)
                     .put("eventType", eventType)
                     .put("createdOn", createdOn)
