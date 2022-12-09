@@ -11,6 +11,6 @@ Compile this JAR and put it into a path specified in _plugin.path_ on each node 
 
 Add the following to the connector configuration:
 
-        "transforms": "outbox", --> name of the database table
+        "transforms": "outbox",
         "transforms.outbox.type": "com.cloudera.kafka.connect.debezium.transformer.CustomDebeziumTopicTransformer",
 
